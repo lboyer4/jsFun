@@ -1,0 +1,40 @@
+ <html>
+ <head>
+ </head>
+ <body>
+  <script>
+
+
+    var hunger = 100;
+
+    function eatSnack() {
+      hunger -= 25;
+      // Log A: hunger
+      console.log('A', hunger)
+      gorgeYourself();
+
+      function gorgeYourself() {
+        const hunger = 0;
+        // Log B: hunger
+        console.log('B', hunger)
+      }
+
+      // Log C: hunger
+      console.log('C', hunger)
+    }
+
+    eatSnack();
+
+    hunger += 5;
+    // Log D: hunger
+    console.log('D', hunger)
+
+    eatSnack();
+    // Log E: hunger
+    console.log('E', hunger)
+
+    // Annotation:
+    // Write your annotation here as a comment
+</script>
+</body>
+</html>

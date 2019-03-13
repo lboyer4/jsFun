@@ -47,20 +47,23 @@ const scope = {
       }
 
       // Log A: number
+      //Prediction: 75
+      console.log(number)
 
       function newNumber() {
         number = 64;
 
+        // Prediction: 75
         // Log B: number
       }
 
       newNumber();
-
+      // Prediction: 64?
       // Log C: number
     }
 
     numberFunction();
-
+    // Prediction: 64
     // Log D: number
 
     const result = 'REPLACE WITH YOUR RESULT HERE';
@@ -151,7 +154,7 @@ const scope = {
           let name = 'Brittany';
         }
 
-        // Log A: name
+        // Log A: name 
       }
 
       // Log B: name

@@ -24,13 +24,13 @@ const kittyPrompts = {
     // Return an array of just the names of kitties who are orange e.g.
     // ['Tiger', 'Snickers']
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.filter(kitty => kitty.color === 'orange')
+   
     return result;
-
     // Annotation:
-    // Write your annotation here as a comment
+   };  // Write your annotation here as a comment
   },
-
+ 
   sortByAge() {
     // Sort the kitties by their age
 
