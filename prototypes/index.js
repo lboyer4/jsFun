@@ -25,11 +25,10 @@ const kittyPrompts = {
     // ['Tiger', 'Snickers']
 
     const orangeCats = kitties.filter(kitty => kitty.color === 'orange');
-    console.log('orange cat array', orangeCats);
 
     //first param of reduce is name of []
     const result = orangeCats.reduce( (names, kitty) => {
-    return names.concat(kitty.name);
+      return names.concat(kitty.name);
     }, []);
    
     return result;
@@ -39,31 +38,25 @@ const kittyPrompts = {
  
   sortByAge() {
     // Sort the kitties by their age
+   const result = kitties.sort( (catA, catB) => {
+      return catA.age < catB.age;
+    });
 
-    const result = = kitties.sort((a, b) => {
-  return (a.age) > (b.age)
-});
     return result;
-
     // Annotation:
     // Write your annotation here as a comment
   },
 
   growUp() {
-    // Return an array of kitties who have all grown up by 2 years e.g.
-    // [{
-    //   name: 'Felicia',
-    //   age: 4,
-    //   color: 'grey'
-    // },
-    // {
-    //   name: 'Tiger',
-    //   age: 7,
-    //   color: 'orange'
-    // },
-    // ...etc]
+    function growUp(kitty) {
+      kitty.age = kitty.age + 2;
+      return kitty;
+    }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.map(growUp);
+
+    console.log(result);
+    
     return result;
   }
 };
@@ -94,7 +87,6 @@ const clubPrompts = {
     //   Pam: ['Drama', 'Art', 'Chess'],
     //   ...etc
     // }
-
     const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
@@ -130,7 +122,6 @@ const modPrompts = {
     //   { mod: 3, studentsPerInstructor: 10 },
     //   { mod: 4, studentsPerInstructor: 8 }
     // ]
-
     const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
@@ -430,7 +421,7 @@ const turingPrompts = {
     //     Brittany: [2, 4],
     //     Nathaniel: [2, 4],
     //     Robbie: [4],
-    //     Leta: [4, 2],
+    //     Leta: [2, 4],
     //     Travis: [1, 2, 3, 4],
     //     Louisa: [1, 2, 3, 4],
     //     Christie: [1, 2, 3, 4],

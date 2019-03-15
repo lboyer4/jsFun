@@ -11,7 +11,7 @@ const scope = {
       }
 
       function beautifyPerson() {
-        // Log A: personB
+        // Log A: personB = Ben
         
         if (personB.includes('B')) {
           personB = person;
@@ -283,30 +283,45 @@ const scope = {
 
     function eatSnack() {
       hunger -= 25;
-      // Log A: hunger
+      // Log A: hunger A 75
       gorgeYourself();
 
       function gorgeYourself() {
         const hunger = 0;
-        // Log B: hunger
+        // Log B: hunger 0 
       }
 
-      // Log C: hunger
+      // Log C: hunger 75
     }
 
     eatSnack();
 
     hunger += 5;
-    // Log D: hunger
+    // Log D: hunger 80
 
     eatSnack();
-    // Log E: hunger
+    // Log E: hunger 55
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { 'A': 75 },
+      { 'B': 0 },
+      { 'C': 75},
+      { 'D': 80},
+      { 'E': 55},
+    ]
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // var hunger starts out at 100 a function is declared
+    // on line 285 but not called so we go down until line 297
+    // where eatSnack is invoked and the hunger variable is changed to 75 
+    // globally because it isnt redeclared with a var, let, or const
+    // gorgeYourself is then invoked reassinging hunger to 0, but because
+    // const is used it is only functionally scoped. Log B is then 0.
+    // Log C goes back to 75 because we are out of that function now
+    // We leave the function and +5 is added to hunger, making Log D 80
+    // eatSnack is invoked again, and another -25 is put on to the global
+    // variable of hunger making log E 55
   },
 
   exerciseJ() {

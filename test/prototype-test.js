@@ -20,7 +20,7 @@ describe("PROTOTYPES", () => {
     it("orangeKittyNames", () => {
       const e = kittyPrompts.orangeKittyNames();
       expect(e).to.deep.equal(["Tiger", "Snickers"])
-    }), it("sortByAge", () => {
+    }), it.skip("sortByAge", () => {
       const e = kittyPrompts.sortByAge();
       expect(e).to.deep.equal([{
         name: "Snickers",
@@ -60,7 +60,7 @@ describe("PROTOTYPES", () => {
       }])
     })
   }), describe("Club Prompts", () => {
-    it.skip("membersBelongingToClubs", () => {
+    it("membersBelongingToClubs", () => {
       const e = clubPrompts.membersBelongingToClubs({
         Louisa: ["Drama", "Art"],
         Pam: ["Drama", "Chess", "Newspaper"],
@@ -310,7 +310,7 @@ describe("PROTOTYPES", () => {
         Brittany: [2, 4],
         Nathaniel: [2, 4],
         Robbie: [4],
-        Leta: [4, 2],
+        Leta: [2, 4],
         Travis: [1, 2, 3, 4],
         Louisa: [1, 2, 3, 4],
         Christie: [1, 2, 3, 4],

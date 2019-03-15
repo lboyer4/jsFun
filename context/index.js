@@ -16,11 +16,13 @@ const context = {
 
 
     // What is the value of `this` when we call ship.fly()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'global window object';
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // 'this' will reference the global window object because we are calling
+    // ship.fly() outside of the constructor/without passing any objects in.
+    
   },
 
   exerciseB() {
@@ -30,7 +32,7 @@ const context = {
     }
     
     // What is the value of `this` when we call fn()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'global window object';
     return result;
 
     // Annotation:
@@ -49,7 +51,7 @@ const context = {
     el.addEventListener('click', car.getInfo);
 
     // What is the value of `this` when a user clicks on our element and car.getInfo() is triggered?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'instance of car';
     return result;
 
     // Annotation: 
@@ -60,17 +62,19 @@ const context = {
     const dog = {
       breed: 'Chihuahua',
       getBreed: function(){
+
         const innerFunction = function() {
           console.log(this.breed);
         };
     
-        return innerFunction();
+        return innerFunction;
       }
     };
 
+    var breed = dog.getBreed();
 
-    // What is the value of `this` when we call dog.getBreed()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    // What is the value of `this` when we call breed()?
+    const result = 'dog';
     return result;
 
     // Annotation: 
@@ -137,7 +141,7 @@ const context = {
 
 
     // What is the value of `this` when we call monopoly.restart()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'Undefined';
     return result;
 
     // Annotation: 
