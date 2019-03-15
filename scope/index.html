@@ -3,38 +3,25 @@
  </head>
  <body>
   <script>
+  
+const clubs = [
+  { club: 'Drama', members: ['Louisa', 'Pam', 'Nathaniel' ] },
+  { club: 'Band', members: ['Leta', 'Robbie', 'Jhun', 'Will'] },
+  { club: 'Chess', members: ['David', 'Pam', 'Brittany', 'Robbie'] },
+  { club: 'Newspaper', members: ['Pam', 'David', 'Brittany', 'Christie', 'Leta'] },
+  { club: 'Astronomy', members: ['Nathaniel', 'Leta'] },
+  { club: 'FBLA', members: ['Christie', 'David', 'Robbie'] },
+  { club: 'Art', members: ['Jhun', 'Louisa'] }
+];
+
+  const result = clubs.forEach(obj => {
+        obj.members.forEach(member => {
+            result[member] ? result[member].push(obj.club) : result[member]
+        })
+    });
+    console.log(result);   
 
 
-    var hunger = 100;
-
-    function eatSnack() {
-      hunger -= 25;
-      // Log A: hunger
-      console.log('A', hunger)
-      gorgeYourself();
-
-      function gorgeYourself() {
-        const hunger = 0;
-        // Log B: hunger
-        console.log('B', hunger)
-      }
-
-      // Log C: hunger
-      console.log('C', hunger)
-    }
-
-    eatSnack();
-
-    hunger += 5;
-    // Log D: hunger
-    console.log('D', hunger)
-
-    eatSnack();
-    // Log E: hunger
-    console.log('E', hunger)
-
-    // Annotation:
-    // Write your annotation here as a comment
 </script>
 </body>
 </html>

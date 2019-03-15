@@ -38,9 +38,9 @@ const kittyPrompts = {
  
   sortByAge() {
     // Sort the kitties by their age
-   const result = kitties.sort( (catA, catB) => {
-      return catA.age < catB.age;
-    });
+   const result = kitties.sort( (catA, catB) => (
+      catA.age < catB.age ? 1 : -1
+    ));
 
     return result;
     // Annotation:
@@ -87,7 +87,12 @@ const clubPrompts = {
     //   Pam: ['Drama', 'Art', 'Chess'],
     //   ...etc
     // }
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    
+    const result = clubs.forEach(obj => {
+        obj.members.forEach(member => {
+            result[member] ? result[member].push(obj.club) : result[member]
+        })
+    });
     return result;
 
     // Annotation:

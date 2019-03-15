@@ -177,31 +177,37 @@ const scope = {
     var dog = 'Spot';
 
     function petDog() {
-      // Log A: dog
+      // Log A: dog Spot
 
       if (dog === 'Spot') {
         let dog = 'Fluffy';
       }
 
       function rollOver() {
-        // Log B: dog
+        // Log B: dog Spot
 
         dog = 'Biscuit';
 
-        // Log C: dog
+        // Log C: dog Biscuit
 
       }
 
       rollOver();
 
-      // Log D: dog
+      // Log D: dog Biscuit
     }
 
     petDog();
 
-    // Log E: dog
+    // Log E: dog Biscuit
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+  { 'A': 'Spot' },
+  { 'B': 'Spot' },
+  { 'C' : 'Biscuit'},
+  { 'D' : 'Biscuit'},
+  { 'E' : 'Biscuit'}
+];
     return result;
 
     // Annotation:
