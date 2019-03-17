@@ -20,7 +20,9 @@ const context = {
     return result;
 
     // Annotation:
-    // 'this' will reference the global window object because we are calling
+    // 'this will be global because when you use => functions 
+    //'this' is determined when the function is created and it is created globally.'
+    // will reference the global window object because we are calling
     // ship.fly() outside of the constructor/without passing any objects in.
     
   },
@@ -36,7 +38,8 @@ const context = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // 'this' is a global window object because fn() is not being called 
+    // on an object it is being called globally. 
   },
 
   exerciseC() {
@@ -51,11 +54,11 @@ const context = {
     el.addEventListener('click', car.getInfo);
 
     // What is the value of `this` when a user clicks on our element and car.getInfo() is triggered?
-    const result = 'car';
+    const result = 'el';
     return result;
 
     // Annotation: 
-    // Write your annotation here as a comment
+    // with event listeners the callback functin refers to the element as the object. 
   },
 
   exerciseD() {
@@ -74,11 +77,11 @@ const context = {
     var breed = dog.getBreed();
 
     // What is the value of `this` when we call breed()?
-    const result = 'dog';
+    const result = 'global window object';
     return result;
 
     // Annotation: 
-    // Write your annotation here as a comment
+    // When you assign 
   },
 
   exerciseE() {

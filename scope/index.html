@@ -3,23 +3,30 @@
  </head>
  <body>
   <script>
-  
-const clubs = [
-  { club: 'Drama', members: ['Louisa', 'Pam', 'Nathaniel' ] },
-  { club: 'Band', members: ['Leta', 'Robbie', 'Jhun', 'Will'] },
-  { club: 'Chess', members: ['David', 'Pam', 'Brittany', 'Robbie'] },
-  { club: 'Newspaper', members: ['Pam', 'David', 'Brittany', 'Christie', 'Leta'] },
-  { club: 'Astronomy', members: ['Nathaniel', 'Leta'] },
-  { club: 'FBLA', members: ['Christie', 'David', 'Robbie'] },
-  { club: 'Art', members: ['Jhun', 'Louisa'] }
+
+const classrooms = [
+  { roomLetter: 'A', program: 'FE', capacity: 32 },
+  { roomLetter: 'B', program: 'BE', capacity: 29 },
+  { roomLetter: 'C', program: 'FE', capacity: 27 },
+  { roomLetter: 'D', program: 'BE', capacity: 30 },
+  { roomLetter: 'E', program: 'FE', capacity: 22 },
+  { roomLetter: 'F', program: 'BE', capacity: 19 },
+  { roomLetter: 'G', program: 'FE', capacity: 29 },
+  { roomLetter: 'H', program: 'BE', capacity: 18 }
 ];
 
-  const result = clubs.forEach(obj => {
-        obj.members.forEach(member => {
-            result[member] ? result[member].push(obj.club) : result[member]
-        })
-    });
-    console.log(result);   
+    // Return the array of classrooms sorted by their capacity (least capacity to greatest
+
+const result =  classrooms.sort( ( classA, classB) => {
+  console.log(classA);
+  console.log(classB);
+ return classA.capacity - classB.capacity;
+});
+
+console.log(result);
+
+
+
 
 
 </script>

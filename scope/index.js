@@ -48,7 +48,7 @@ const scope = {
 
       // Log A: number
       //Prediction: 75
-      console.log(number)
+      console.log(number);
 
       function newNumber() {
         number = 64;
@@ -202,12 +202,12 @@ const scope = {
     // Log E: dog Biscuit
 
     const result = [
-  { 'A': 'Spot' },
-  { 'B': 'Spot' },
-  { 'C' : 'Biscuit'},
-  { 'D' : 'Biscuit'},
-  { 'E' : 'Biscuit'}
-];
+      { 'A': 'Spot' },
+      { 'B': 'Spot' },
+      { 'C' : 'Biscuit'},
+      { 'D' : 'Biscuit'},
+      { 'E' : 'Biscuit'}
+    ];
     return result;
 
     // Annotation:
@@ -314,7 +314,7 @@ const scope = {
       { 'C': 75},
       { 'D': 80},
       { 'E': 55},
-    ]
+    ];
     return result;
 
     // Annotation:

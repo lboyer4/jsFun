@@ -38,7 +38,7 @@ const kittyPrompts = {
  
   sortByAge() {
     // Sort the kitties by their age
-   const result = kitties.sort( (catA, catB) => (
+    const result = kitties.sort( (catA, catB) => (
       catA.age < catB.age ? 1 : -1
     ));
 
@@ -55,7 +55,6 @@ const kittyPrompts = {
 
     const result = kitties.map(growUp);
 
-    console.log(result);
     
     return result;
   }
@@ -88,11 +87,15 @@ const clubPrompts = {
     //   ...etc
     // }
     
-    const result = clubs.forEach(obj => {
-        obj.members.forEach(member => {
-            result[member] ? result[member].push(obj.club) : result[member]
-        })
-    });
+    const result = clubs.reduce((acc, club) => {
+      club.members.forEach(member => {
+        if (!acc[member]) {
+          acc[member] = [];
+        } 
+        acc[member].push(club.club);
+      });
+      return acc;
+    }, {});
     return result;
 
     // Annotation:
@@ -127,7 +130,14 @@ const modPrompts = {
     //   { mod: 3, studentsPerInstructor: 10 },
     //   { mod: 4, studentsPerInstructor: 8 }
     // ]
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = mods.reduce(function(acc, mod) {
+      const obj = {};
+      obj.mod = mod.mod;
+      obj.studentsPerInstructor = mod.students / mod.instructors;
+      acc.push(obj);
+      return acc;
+    }, []);
+    
     return result;
 
     // Annotation:
@@ -162,11 +172,21 @@ const cakePrompts = {
     //    ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    var flavorsInStock = [];
+    
+    cakes.forEach(function(cake) {
+      var newObj = {};
+      newObj.flavor = cake.cakeFlavor;
+      newObj.inStock = cake.inStock; 
+      flavorsInStock.push(newObj);
+    });
+
+    const result = flavorsInStock;
     return result;
 
+  
     // Annotation:
-    // Write your annotation here as a comment
+
   },
 
   onlyInStock() {
@@ -190,22 +210,26 @@ const cakePrompts = {
     // ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.filter(cake => cake.inStock > 0);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Because we are looking to only show cakes that are instock, it makes sense to use the filter prototype.
+    //So I attached filter to the array and asked it to look for cakes that had an inStock greater than 0 and because filter creates a new array on it's own I didnt have to use push or anything to make a new array of only cakes in stock
   },
   
   totalInventory() {
     // Return the total amount of cakes in stock e.g.
     // 59
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((acc, cake )=> acc += cake.inStock, 0);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // We use the .reduce prototype with the arguments of the accumilator 
+    // and a dynamic name for each cake. Each cake is iriterated through
+    // and the key instock is found and the value associated with it is added 
+    // in to the accumulator, which is starting at 0.
   },
 
   allToppings() {
@@ -213,7 +237,15 @@ const cakePrompts = {
     // every cake in the dataset e.g.
     // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((acc, cake) => {
+      cake.toppings.forEach(topping => {
+        if (!acc.includes(topping)) {
+          acc.push(topping);
+        }
+      });
+      return acc;
+    }, []);
+    
     return result;
 
     // Annotation:
@@ -231,7 +263,13 @@ const cakePrompts = {
     //    ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((acc, cake) => {
+      cake.toppings.forEach(topping => {
+        acc[topping] ? acc[topping]++ : acc[topping] = 1;
+      });
+      return acc;
+    }, {});
+
     return result;
 
     // Annotation:
@@ -266,7 +304,7 @@ const classPrompts = {
     //   { roomLetter: 'G', program: 'FE', capacity: 29 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.filter(classroom => classroom.program === 'FE');
     return result;
 
     // Annotation:
@@ -281,7 +319,16 @@ const classPrompts = {
     //   beCapacity: 96
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.reduce(function(acc, classroom) {
+      acc.feCapacity = acc.feCapacity || 0;
+      acc.beCapacity = acc.beCapacity || 0;
+      if (classroom.program === 'FE') {
+        acc.feCapacity += classroom.capacity ;
+      } else {
+        acc.beCapacity += classroom.capacity;
+      }
+      return acc;
+    }, {});
     return result;
 
     // Annotation:
@@ -291,11 +338,15 @@ const classPrompts = {
   sortByCapacity() {
     // Return the array of classrooms sorted by their capacity (least capacity to greatest)
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.sort( ( classA, classB) => {
+      return classA.capacity - classB.capacity;
+    });
+
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // the prompt gives a hint that they want the array to be *sorted* 
+    // least to greatest. So we know we will be using the sort prototype. This needs two paramaters that will be compared and then sorted. Because it is a two line function we use return.
   }
 };
 
@@ -735,9 +786,22 @@ const dinosaurPrompts = {
       { name: 'Chris Pratt', ages: [ 36, 39 ] },
       { name: 'Bryce Dallas Howard', ages: [ 34, 37 ] } ]
     */
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    
+    return Object.keys(humans).reduce(function(result, actorName) {
+      const obj = {};
+      obj.name = actorName;
+      obj.ages = [];
+      movies.forEach(function(movie) {
+        if (movie.cast.includes(actorName)) {
+          obj.ages.push(movie.yearReleased - humans[actorName].yearBorn);
+        }
+      });
+      if(obj.ages.length != 0) {
+        result.push(obj);
+      }
+      return result;
+    }, []);
+    
 
     // Annotation:
     // Write your annotation here as a comment
