@@ -26,7 +26,7 @@ const scope = {
     }
 
     changePerson();
-
+ 
     // Log D: personC
 
     const result = 'REPLACE WITH YOUR RESULT HERE';
@@ -117,22 +117,22 @@ const scope = {
         let greeting = 'hello';
       }
 
-      // Log A: greeting
+      // Log A: greeting hi
 
       const newGreeting = ()  => {
         greeting = 'welcome';
 
-        // Log B: greeting
+        // Log B: greeting welcome
       };
 
       newGreeting();
 
-      // Log C: greeting
+      // Log C: greeting welcome
     };
 
     greetingGenerator();
 
-    // Log D: greeting
+    // Log D: greeting howdy
 
     const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
