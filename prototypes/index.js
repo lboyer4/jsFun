@@ -87,16 +87,16 @@ const clubPrompts = {
     //   ...etc
     // }
     
-    const result = clubs.reduce((acc, club) => {
-      club.members.forEach(member => {
-        if (!acc[member]) {
-          acc[member] = [];
-        } 
-        acc[member].push(club.club);
-      });
-      return acc;
-    }, {});
-    return result;
+    // const result = clubs.reduce((acc, club) => {
+    //   club.members.forEach(member => {
+    //     if (!acc[member]) {
+    //       acc[member] = [];
+    //     } 
+    //     acc[member].push(club.club);
+    //   });
+    //   return acc;
+    // }, {});
+    // return result;
 
     // Annotation:
     // Write your annotation here as a comment
@@ -658,13 +658,16 @@ const astronomyPrompts = {
     //     color: 'red' }
     // ]
 
-    const result = stars.filter((star) => {
-    if (star.constellation != '') {
-      return star
-    }
-  });
-    return result;
+    const starsInConstellations = Object.keys(constellations).reduce((acc, key) => {
+      acc = acc.concat(constellations[key].stars);
+      return acc;
+    }, [] );
 
+    const result = stars.filter((star) => {
+      return starsInConstellations.includes(star.name);
+    });
+
+    return result;
     // Annotation:
     // Write your annotation here as a comment
   },
@@ -680,7 +683,14 @@ const astronomyPrompts = {
     //   red: [{obj}]
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = stars.reduce((acc, star) => {
+      if(!acc[star.color]) {
+        acc[star.color] = [];
+      } 
+      acc[star.color].push(star);
+     
+      return acc;
+    }, {} ) ;
     return result;
 
     // Annotation:
@@ -702,8 +712,14 @@ const astronomyPrompts = {
     //    "The Little Dipper" ]
 
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    const brightStars =[]
+const result = stars.forEach(star => {
+  if (star.constellation != '') {
+    brightStars.push(star.constellation);
+  }
+})
+;
+    return brightStars;
 
     // Annotation:
     // Write your annotation here as a comment

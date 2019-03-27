@@ -362,7 +362,7 @@ describe("PROTOTYPES", () => {
         lightYearsFromEarth: 640,
         color: "red"
       }])
-    }), it.skip("starsByColor", () => {
+    }), it("starsByColor", () => {
       const e = astronomyPrompts.starsByColor();
       expect(e).to.deep.equal({
         blue: [{
@@ -437,7 +437,7 @@ describe("PROTOTYPES", () => {
           color: "red"
         }]
       })
-    }), it.skip("constellationsStarsExistIn", () => {
+    }), it("constellationsStarsExistIn", () => {
       const e = astronomyPrompts.constellationsStarsExistIn();
       expect(e).to.deep.equal(["Canis Major", "Carina", "Boötes", "Auriga", "Orion", "Lyra", "Canis Minor", "The Plow", "Orion", "The Little Dipper"])
     })
