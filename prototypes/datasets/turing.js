@@ -21,3 +21,16 @@ module.exports = {
   instructors,
   cohorts
 };
+
+    // const result = instructors.reduce((acc, instructor) => {
+    //   var instructorCount = {};
+    //   instructorCount.name = instructor.name;
+    //   cohorts.forEach((cohort) => {
+    //     if (instructor.module === cohort.module) {
+    //       instructorCount.studentCount = cohort.studentCount;
+    //     }
+    //   });
+    //   acc.push(instructorCount);
+    //   return acc;  
+    // }, []);
+    // return result;
