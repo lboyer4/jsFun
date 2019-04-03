@@ -23,8 +23,7 @@ const context = {
     // 'this will be global because when you use => functions 
     //'this' is determined when the function is created and it is created globally.'
     // will reference the global window object because we are calling
-    // ship.fly() outside of the constructor/without passing any objects in.
-    
+    // ship.fly() outside of the constructor/without passing any objects in.  
   },
 
   exerciseB() {
@@ -69,7 +68,6 @@ const context = {
         const innerFunction = function() {
           console.log(this.breed);
         };
-    
         return innerFunction;
       }
     };
